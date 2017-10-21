@@ -1,7 +1,10 @@
 class Post < ActiveRecord::Base
 
   belongs_to :author
-  validate :is_title_case 
+  validate :is_title_case
+
+  # before save is called after the validation so we use before_validation
+  before_validation :make_title_case
 
   private
 
